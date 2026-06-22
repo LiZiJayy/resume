@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>刘子杰 - Portfolio</title>
+    <!-- 引入高端衬线体与现代无衬线体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* 绝不使用纯黑纯白，使用纸张与墨水色 */
+            --bg-paper: #f7f5f0;
+            --text-ink: #1c1b18;
+            --text-muted: #6b6a65;
+            --accent-rust: #9e3b22;
+
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-sans: 'Outfit', sans-serif;
+
+            /* 指数级缓动动画参数 */
+            --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-paper);
+            color: var(--text-ink);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* 不对称的留白与布局 */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: clamp(2rem, 5vw, 6rem) clamp(1.5rem, 4vw, 4rem);
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                grid-template-columns: 3fr 7fr; /* 左侧边栏 30%，右侧主体 70% */
+                gap: 6rem;
+            }
+        }
+
+        /* 左侧固定信息栏 */
+        .sidebar {
+            position: relative;
+        }
+
+        @media (min-width: 1024px) {
+            .sidebar {
+                position: sticky;
+                top: 6rem;
+                height: max-content;
+            }
+        }
+
+        .name-title {
+            font-family: var(--font-serif);
+            font-size: clamp(3rem, 5vw, 5rem);
+            font-weight: 600;
+            line-height: 1;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .job-title {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-rust);
+            margin-bottom: 3rem;
+            font-weight: 600;
+        }
+
+        .contact-list {
+            list-style: none;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .contact-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* 极细分割线 */
+        hr.elegant-line {
+            border: none;
+            height: 1px;
+            background-color: rgba(28, 27, 24, 0.15);
+            margin: 4rem 0;
+        }
+
+        /* 右侧核心内容区 */
+        .main-content section {
+            margin-bottom: 6rem;
+        }
+
+        .section-header {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-header::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background-color: rgba(28, 27, 24, 0.1);
+        }
+
+        /* 报刊式的核心数据展示 */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .metric-item {
+            border-left: 2px solid var(--accent-rust);
+            padding-left: 1.5rem;
+        }
+
+        .metric-number {
+            font-family: var(--font-serif);
+            font-size: clamp(3.5rem, 5vw, 4.5rem);
+            font-weight: 400;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            color: var(--text-ink);
+        }
+
+        .metric-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* 章节化的经历展示 */
+        .experience-item {
+            margin-bottom: 4rem;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .exp-company {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 3vw, 2.5rem);
+            font-weight: 600;
+            color: var(--text-ink);
+            line-height: 1.1;
+        }
+
+        .exp-role {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .exp-meta {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-family: var(--font-sans);
+        }
+
+        .exp-desc {
+            font-size: 1.05rem;
+            color: var(--text-ink);
+            max-width: 65ch; /* 限制阅读宽度，符合排版学标准 */
+        }
+
+        .exp-desc p {
+            margin-bottom: 1rem;
+            text-align: justify; /* 两端对齐，增加报刊感 */
+        }
+
+        /* 教育背景 */
+        .edu-item {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (min-width: 600px) {
+            .edu-item {
+                grid-template-columns: 1fr 2fr;
+                gap: 2rem;
+            }
+        }
+
+        .edu-year {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            color: var(--text-muted);
+        }
+
+        /* 动画初始状态 (Staggered Reveal) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1.5s var(--ease-out-expo), transform 1.5s var(--ease-out-expo);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- 左侧：固定导航与基本信息 -->
+        <aside class="sidebar reveal" style="transition-delay: 0.1s;">
+            <h1 class="name-title">刘子杰</h1>
+            <div class="job-title">Data Scientist / ML Engineer</div>
+
+            <ul class="contact-list">
+                <li>15996406200</li>
+                <li>1838465980@qq.com</li>
+                <li>WeChat: liuwuyiii</li>
+            </ul>
+
+            <hr class="elegant-line">
+
+            <div style="font-family: var(--font-serif); font-size: 1.2rem; font-style: italic; color: var(--text-muted); max-width: 250px; line-height: 1.4;">
+                "Uncovering hidden patterns through rigorous statistics and causal inference."
+            </div>
+        </aside>
+
+        <!-- 右侧：主体内容 -->
+        <main class="main-content">
+
+            <!-- 核心指标区 -->
+            <section class="reveal" style="transition-delay: 0.3s;">
+                <div class="section-header">Selected Highlights</div>
+                <div class="metrics-grid">
+                    <div class="metric-item">
+                        <div class="metric-number">85%</div>
+                        <div class="metric-label">Audit Vol. Reduction<br>via LLM Agent</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-number">0.21</div>
+                        <div class="metric-label">MRR Score<br>News Rec System</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-number">+50%</div>
+                        <div class="metric-label">Report Usage<br>Data Automation</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 实习经历 -->
+            <section>
+                <div class="section-header reveal">Professional Experience</div>
+
+                <!-- 字节跳动 -->
+                <div class="experience-item reveal">
+                    <div class="exp-header">
+                        <div class="exp-company">ByteDance</div>
+                        <div class="exp-meta">Beijing, China &nbsp; | &nbsp; 2025.09 – 2025.12</div>
+                    </div>
+                    <div class="exp-role">Data Analysis Intern, Community Ecology Dept (Douyin)</div>
+                    <div class="exp-desc">
+                        <p><strong>LLM Agent & Audit Architecture:</strong> Designed data structures and I/O logic for LLM agent audits. Introduced a high-recall agent for initial screening, utilizing multimodal plugins (ASR, OSR, frame extraction), dropping human review volume from 8,000 to 1,200.</p>
+                        <p><strong>Causal Inference & AB Testing:</strong> Evaluated the core business value of "trending videos" by conducting PSM (Propensity Score Matching) to establish highly balanced treatment and control groups. Analyzed metrics to determine precise ecosystem value.</p>
+                        <p><strong>Algorithmic Scoring:</strong> Trained an XGBoost model layered on a neural network to assign "cyberbullying probability scores" to users based on textual negativity across scenarios, routing high-risk profiles directly to human reviewers.</p>
+                    </div>
+                </div>
+
+                <!-- B站 -->
+                <div class="experience-item reveal">
+                    <div class="exp-header">
+                        <div class="exp-company">Bilibili</div>
+                        <div class="exp-meta">Shanghai, China &nbsp; | &nbsp; 2025.04 – 2025.09</div>
+                    </div>
+                    <div class="exp-role">Data Analysis Intern, Traffic Ecology Dept</div>
+                    <div class="exp-desc">
+                        <p><strong>Attribution Analysis:</strong> Investigated CTR anomalies in the gaming sector by isolating impacted cohorts and evaluating multifactorial causes including content quality, targeting goals, and exposure rates.</p>
+                        <p><strong>Recommendation AB Tests:</strong> Collaborated with algorithm teams to design and monitor AB tests for core recommendation system updates, managing the rollout strategy based on holistic platform metrics.</p>
+                        <p><strong>Data Engineering & BI:</strong> Architected wide tables for content distribution via SQL, scheduled data pipelines, and developed executive dashboards on Guanyuan BI.</p>
+                    </div>
+                </div>
+
+                <!-- 阿里天池 -->
+                <div class="experience-item reveal">
+                    <div class="exp-header">
+                        <div class="exp-company">Ali Tianchi Project</div>
+                        <div class="exp-meta">Recommendation Algorithms &nbsp; | &nbsp; 2025.11 – 2025.12</div>
+                    </div>
+                    <div class="exp-role">Algorithm Engineer (Project)</div>
+                    <div class="exp-desc">
+                        <p>Implemented a multi-channel recall strategy (ItemCF, Item_emb, youtubeDNN) for an article recommendation system. Solved cold-start limitations by integrating a Bias Net to extract categorical preferences, subsequently injecting these bias scores into an LGBM ranking model, achieving an online MRR of 0.21.</p>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- 教育背景 -->
+            <section class="reveal">
+                <div class="section-header">Education</div>
+
+                <div class="edu-item">
+                    <div class="edu-year">2026 – 2027</div>
+                    <div class="edu-details">
+                        <div class="exp-company" style="font-size: 1.75rem;">National University of Singapore</div>
+                        <div class="exp-role" style="margin-bottom: 0.5rem; color: var(--text-muted);">Master of Science in Data Science and Machine Learning</div>
+                    </div>
+                </div>
+
+                <div class="edu-item">
+                    <div class="edu-year">2022 – 2026</div>
+                    <div class="edu-details">
+                        <div class="exp-company" style="font-size: 1.75rem;">Nanjing University</div>
+                        <div class="exp-role" style="margin-bottom: 0.5rem; color: var(--text-muted);">Bachelor of Science in Statistics</div>
+                        <div class="exp-meta">Rank: Top 20%</div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- 极简的交互：Intersection Observer 实现丝滑入场动画 -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const reveals = document.querySelectorAll(".reveal");
+
+            const revealOnScroll = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                        observer.unobserve(entry.target); // 只触发一次
+                    }
+                });
+            }, {
+                root: null,
+                threshold: 0.15,
+                rootMargin: "0px 0px -50px 0px"
+            });
+
+            reveals.forEach((el) => revealOnScroll.observe(el));
+        });
+    </script>
+</body>
+</html>
