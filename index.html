@@ -224,7 +224,32 @@
             transform: translateY(0);
         }
 
-    </style>
+    
+        .download-btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--accent-rust);
+            color: var(--bg-paper);
+            text-decoration: none;
+            font-family: var(--font-sans);
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 0.05em;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(158, 59, 34, 0.2);
+            position: relative;
+            z-index: 100;
+            cursor: pointer;
+        }
+
+        .download-btn:hover {
+            background-color: #7a2d19;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(158, 59, 34, 0.3);
+            color: #ffffff;
+        }
+</style>
 </head>
 <body style="zoom: 0.75;">
 
@@ -239,6 +264,10 @@
                 <li>1838465980@qq.com</li>
                 <li>微信：liuwuyiii</li>
             </ul>
+            <div style="margin-top: 2.5rem;">
+                <a href="https://mira.byteintl.net/mira/api/v1/file/d/tos-mya-i-xobrcjvdq7/5b041aaea4cf457eb9bb7f0eb6998a12.pdf~tplv-xobrcjvdq7-image?sign=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIzMTYzNzg1IiwidXJpIjoidG9zLW15YS1pLXhvYnJjanZkcTcvNWIwNDFhYWVhNGNmNDU3ZWI5YmI3ZjBlYjY5OThhMTIucGRmIiwiYXV0IjowLCJpc3MiOiJtaXJhIiwiZXhwIjoxNzgyODQyNDAwfQ.Nguvk4a_Jqey95ucCXKE9KFyPQ_mh9xcQw4if8_BcTc" class="download-btn" target="_blank" download="刘子杰简历.pdf">下载 PDF 简历</a>
+            </div>
+
 
             <hr class="elegant-line">
 
