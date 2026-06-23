@@ -33,40 +33,29 @@
             background-color: var(--bg-paper);
             color: var(--text-ink);
             font-family: var(--font-sans);
-            line-height: 1.6;
+            line-height: 1.6; font-size: 1.2rem;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
         }
 
         /* 不对称的留白与布局 */
         .container {
-            max-width: 1400px;
+            max-width: 100%;
             margin: 0 auto;
-            padding: clamp(2rem, 5vw, 6rem) clamp(1.5rem, 4vw, 4rem);
+            padding: 4rem 10vw;
             display: grid;
             grid-template-columns: 1fr;
             gap: 4rem;
         }
 
-        @media (min-width: 1024px) {
-            .container {
-                grid-template-columns: 3fr 7fr; /* 左侧边栏 30%，右侧主体 70% */
-                gap: 6rem;
-            }
-        }
+        
 
         /* 左侧固定信息栏 */
         .sidebar {
             position: relative;
         }
 
-        @media (min-width: 1024px) {
-            .sidebar {
-                position: sticky;
-                top: 6rem;
-                height: max-content;
-            }
-        }
+        
 
         .name-title {
             font-family: var(--font-serif);
@@ -78,7 +67,7 @@
         }
 
         .job-title {
-            font-size: 1rem;
+            font-size: 1.15rem;
             text-transform: uppercase;
             letter-spacing: 0.1em;
             color: var(--accent-rust);
@@ -88,7 +77,7 @@
 
         .contact-list {
             list-style: none;
-            font-size: 0.9rem;
+            font-size: 1.3rem;
             color: var(--text-muted);
         }
 
@@ -111,7 +100,7 @@
 
         .section-header {
             font-family: var(--font-sans);
-            font-size: 0.85rem;
+            font-size: 1.15rem;
             text-transform: uppercase;
             letter-spacing: 0.15em;
             color: var(--text-muted);
@@ -151,7 +140,7 @@
         }
 
         .metric-label {
-            font-size: 0.85rem;
+            font-size: 1.15rem;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.05em;
@@ -180,21 +169,21 @@
         }
 
         .exp-role {
-            font-size: 1rem;
+            font-size: 1.15rem;
             font-weight: 600;
             margin-bottom: 1.5rem;
         }
 
         .exp-meta {
-            font-size: 0.9rem;
+            font-size: 1.25rem;
             color: var(--text-muted);
             font-family: var(--font-sans);
         }
 
         .exp-desc {
-            font-size: 1.05rem;
+            font-size: 1.25rem;
             color: var(--text-ink);
-            max-width: 65ch; /* 限制阅读宽度，符合排版学标准 */
+            max-width: 70vw; /* 限制阅读宽度，符合排版学标准 */
         }
 
         .exp-desc p {
@@ -219,7 +208,7 @@
 
         .edu-year {
             font-family: var(--font-serif);
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             color: var(--text-muted);
         }
 
@@ -237,45 +226,47 @@
 
     </style>
 </head>
-<body>
+<body style="zoom: 0.75;">
 
     <div class="container">
         <!-- 左侧：固定导航与基本信息 -->
         <aside class="sidebar reveal" style="transition-delay: 0.1s;">
             <h1 class="name-title">刘子杰</h1>
-            <div class="job-title">Data Scientist / ML Engineer</div>
+            <div class="job-title">数据科学 / 数据分析 / 机器学习</div>
 
             <ul class="contact-list">
                 <li>15996406200</li>
                 <li>1838465980@qq.com</li>
-                <li>WeChat: liuwuyiii</li>
+                <li>微信：liuwuyiii</li>
             </ul>
 
             <hr class="elegant-line">
 
-            <div style="font-family: var(--font-serif); font-size: 1.2rem; font-style: italic; color: var(--text-muted); max-width: 250px; line-height: 1.4;">
-                "Uncovering hidden patterns through rigorous statistics and causal inference."
-            </div>
+            
         </aside>
 
         <!-- 右侧：主体内容 -->
         <main class="main-content">
 
-            <!-- 核心指标区 -->
-            <section class="reveal" style="transition-delay: 0.3s;">
-                <div class="section-header">Selected Highlights</div>
-                <div class="metrics-grid">
-                    <div class="metric-item">
-                        <div class="metric-number">85%</div>
-                        <div class="metric-label">Audit Vol. Reduction<br>via LLM Agent</div>
+            <!-- 教育背景 -->
+            <section class="reveal">
+                <div class="section-header">Education</div>
+
+                <div class="edu-item">
+                    <div class="edu-year">2026.09 – 2027.06</div>
+                    <div class="edu-details">
+                        <div class="exp-company" style="font-size: 1.75rem;">新加坡国立大学一年硕</div>
+                        <div class="exp-role" style="margin-bottom: 0.5rem; color: var(--text-muted);">Data Science and Machine Learning</div>
+                        <div class="exp-meta">Singapore</div>
                     </div>
-                    <div class="metric-item">
-                        <div class="metric-number">0.21</div>
-                        <div class="metric-label">MRR Score<br>News Rec System</div>
-                    </div>
-                    <div class="metric-item">
-                        <div class="metric-number">+50%</div>
-                        <div class="metric-label">Report Usage<br>Data Automation</div>
+                </div>
+
+                <div class="edu-item">
+                    <div class="edu-year">2022.09 – 2026.06</div>
+                    <div class="edu-details">
+                        <div class="exp-company" style="font-size: 1.75rem;">南京大学本科</div>
+                        <div class="exp-role" style="margin-bottom: 0.5rem; color: var(--text-muted);">数学学院统计学</div>
+                        <div class="exp-meta">南京，中国 · GPA20%</div>
                     </div>
                 </div>
             </section>
@@ -284,66 +275,74 @@
             <section>
                 <div class="section-header reveal">Professional Experience</div>
 
-                <!-- 字节跳动 -->
                 <div class="experience-item reveal">
                     <div class="exp-header">
-                        <div class="exp-company">ByteDance</div>
-                        <div class="exp-meta">Beijing, China &nbsp; | &nbsp; 2025.09 – 2025.12</div>
+                        <div class="exp-company">字节跳动</div>
+                        <div class="exp-meta">抖音电商 &nbsp; | &nbsp; 2026.4 – 2026.8</div>
                     </div>
-                    <div class="exp-role">Data Analysis Intern, Community Ecology Dept (Douyin)</div>
+                    <div class="exp-role">抖音电商-用户增长-数据科学</div>
                     <div class="exp-desc">
-                        <p><strong>LLM Agent & Audit Architecture:</strong> Designed data structures and I/O logic for LLM agent audits. Introduced a high-recall agent for initial screening, utilizing multimodal plugins (ASR, OSR, frame extraction), dropping human review volume from 8,000 to 1,200.</p>
-                        <p><strong>Causal Inference & AB Testing:</strong> Evaluated the core business value of "trending videos" by conducting PSM (Propensity Score Matching) to establish highly balanced treatment and control groups. Analyzed metrics to determine precise ecosystem value.</p>
-                        <p><strong>Algorithmic Scoring:</strong> Trained an XGBoost model layered on a neural network to assign "cyberbullying probability scores" to users based on textual negativity across scenarios, routing high-risk profiles directly to human reviewers.</p>
+                        <p>以数科视角支持中国电商增长业务，与策略产品协作，运用分析能力为电商用户拉新、复购、流失激活打开新视角，拉动目标用户增长。</p>
+                        <p><strong>AI 分析：</strong>通过运用以用户埋点行为日志为核心数据源的 AI 产品，对于用户在商品推荐承接页内遇到的问题进行开放性问询，随后定义明确问题口径进行二次分析，产出结论并进行核验；最终发现约 20% 用户在承接页内存在商品重复推荐、推荐不符合用户偏好问题，后续联合算法更改。</p>
+                        <p><strong>策略实验价值挖掘：</strong>在主端弹窗导流用户至抖音电商 app 实验中，全量实验三端 GMV 正向不显著，需分人群探索策略对应高价值人群，通过拆解实验数据发现流失天数 30 日+新用户为三端 GMV 最优人群，但存在主端 LT 负向，因此对策略及人群进行弱化微调，探索主端 LT 不负的边界策略。</p>
+                        <p><strong>投放次留指标排查分析：</strong>监控看板数据发现抖音电商 app 部分投放渠道（OPPO 商店等）次留至三日留存衰退速率过高，需探查异常原因。分投放渠道、广告账户、渠道号拆解首日激活用户在次日电商 app 内的曝光、点击、闪退数据，定位问题投放渠道号，多项排查后发现因人群包异常导致首日投放用户未在次日被排除投放导致次留率异常高，紧急修复减少资损。</p>
                     </div>
                 </div>
 
-                <!-- B站 -->
                 <div class="experience-item reveal">
                     <div class="exp-header">
-                        <div class="exp-company">Bilibili</div>
-                        <div class="exp-meta">Shanghai, China &nbsp; | &nbsp; 2025.04 – 2025.09</div>
+                        <div class="exp-company">字节跳动</div>
+                        <div class="exp-meta">抖音主端 &nbsp; | &nbsp; 2025.9 – 2025.12</div>
                     </div>
-                    <div class="exp-role">Data Analysis Intern, Traffic Ecology Dept</div>
+                    <div class="exp-role">安全与策略-数据科学</div>
                     <div class="exp-desc">
-                        <p><strong>Attribution Analysis:</strong> Investigated CTR anomalies in the gaming sector by isolating impacted cohorts and evaluating multifactorial causes including content quality, targeting goals, and exposure rates.</p>
-                        <p><strong>Recommendation AB Tests:</strong> Collaborated with algorithm teams to design and monitor AB tests for core recommendation system updates, managing the rollout strategy based on holistic platform metrics.</p>
-                        <p><strong>Data Engineering & BI:</strong> Architected wide tables for content distribution via SQL, scheduled data pipelines, and developed executive dashboards on Guanyuan BI.</p>
+                        <p>负责建立生态指标全流程，结合问题水位、人力成本制定抽样策略。考虑引入大模型 agent 来进行审核初筛，设计提示词与输入输出信息的数据结构，负责不同审核环节之间的数据传输，有效降低审核人力成本。为算法提供数据来源与口径，产出用户可能受到网暴的模型分，辅助制定生态策略。</p>
+                        <p><strong>生态指标建立：</strong>针对站内存在的虚假资讯问题，依据摸底水位，计算最小抽样量，制定审核方案，回收审核结果并搭建看板。</p>
+                        <p><strong>模型 Agent：</strong>对于问题水位极低的生态问题，编写高召提示词，引入大模型 agent 初筛过滤，通过输入视频抽帧图片与 ASR、OSR 插件获取的信息，由模型 agent 初次审核后再将问题部分送入人审，待审量由 8000 降至 1200。</p>
+                        <p><strong>算法模型：</strong>首先获取用户发评信息，利用前置负向文本 NN 模型得到每个用户在不同场景的负向评论数，随后训练 XGB 模型为用户打出网暴分数，高分即高概率为网暴用户送入人审。</p>
+                        <p><strong>上榜价值分析：</strong>为探究上热榜对于一个视频的价值，分赛道、分 VV 量级考察 VV 变化趋势；提需产出埋点口径热点频道 VV，直观看到价值，随后利用 PSM 建立实验组与对照组，通过平衡性检验后，通过计算总完播量、互动数据等结果指标，对比得到上榜价值。</p>
                     </div>
                 </div>
 
-                <!-- 阿里天池 -->
                 <div class="experience-item reveal">
                     <div class="exp-header">
-                        <div class="exp-company">Ali Tianchi Project</div>
-                        <div class="exp-meta">Recommendation Algorithms &nbsp; | &nbsp; 2025.11 – 2025.12</div>
+                        <div class="exp-company">上海幻电信息科技有限公司</div>
+                        <div class="exp-meta">B 站 &nbsp; | &nbsp; 2025.4 – 2025.9</div>
                     </div>
-                    <div class="exp-role">Algorithm Engineer (Project)</div>
+                    <div class="exp-role">流量生态部总编室-数据分析</div>
                     <div class="exp-desc">
-                        <p>Implemented a multi-channel recall strategy (ItemCF, Item_emb, youtubeDNN) for an article recommendation system. Solved cold-start limitations by integrating a Bias Net to extract categorical preferences, subsequently injecting these bias scores into an LGBM ranking model, achieving an online MRR of 0.21.</p>
+                        <p>监控全站视频播放数据，对于异动情况（分部门、分渠道等）进行归因分析。针对特殊需求制定投流策略，实时监控数据并评估策略好坏。</p>
+                        <p><strong>异动归因分析：</strong>针对七月游戏部门点击率下降情况，进行归因排查分析，首先确定下降分组与开始下降的时间，再考察稿件质量、稿件投放目标、以及曝光数据对于点击率的影响。</p>
+                        <p><strong>投流策略制定与执行：</strong>以良好的评论氛围与高曝光为核心指标，针对 蔡徐坤 与 HOPICO 的合作采访稿件，制定先特定用户、后全量曝光的投放策略，并利用投放系统执行策略。</p>
+                        <p><strong>大型项目复盘：</strong>回收 B 站周年庆数据，如直播 PCU、稿件投放数据与稿件播放数据等，分析与去年投放策略差异，针对高点击率这一核心目标提出投放层面的建议。</p>
                     </div>
                 </div>
 
             </section>
 
-            <!-- 教育背景 -->
-            <section class="reveal">
-                <div class="section-header">Education</div>
+            <!-- VIBE CODING -->
+            <section>
+                <div class="section-header reveal" style="font-size: 2rem; font-weight: bold; color: var(--accent-rust); text-transform: uppercase;">VIBE CODING - 欢迎点击链接体验</div>
 
-                <div class="edu-item">
-                    <div class="edu-year">2026 – 2027</div>
-                    <div class="edu-details">
-                        <div class="exp-company" style="font-size: 1.75rem;">National University of Singapore</div>
-                        <div class="exp-role" style="margin-bottom: 0.5rem; color: var(--text-muted);">Master of Science in Data Science and Machine Learning</div>
+                <div class="experience-item reveal">
+                    <div class="exp-header">
+                        <div class="exp-company">图片在线压缩网站</div>
+                        <div class="exp-meta"><a href="https://lizijayy.github.io/photo-revise/" target="_blank" rel="noopener noreferrer" style="color: var(--accent-rust); text-decoration: underline; font-weight: bold; position: relative; z-index: 100; pointer-events: auto;">HTTPS://LIZIJAYY.GITHUB.IO/PHOTO-REVISE/</a></div>
+                    </div>
+                    <div class="exp-role">图片压缩 / 裁剪 / 格式导出</div>
+                    <div class="exp-desc">
+                        <p>市面上图片内存压缩、图片大小裁剪工具质量良莠不齐，使用 PS 需要一定学习成本，而在网上注册的场景下经常需要规定尺寸、限定内存大小的证件照，因此 vibe coding 开发图片压缩工具。上传图片，输入目标图片尺寸与最大体积，使用质量参数二分搜索，在保证文件大小不超过目标 KB 的前提下尽可能保留画质，最后支持将处理后图片下载为 JPG/PNG/PDF 格式。</p>
                     </div>
                 </div>
 
-                <div class="edu-item">
-                    <div class="edu-year">2022 – 2026</div>
-                    <div class="edu-details">
-                        <div class="exp-company" style="font-size: 1.75rem;">Nanjing University</div>
-                        <div class="exp-role" style="margin-bottom: 0.5rem; color: var(--text-muted);">Bachelor of Science in Statistics</div>
-                        <div class="exp-meta">Rank: Top 20%</div>
+                <div class="experience-item reveal">
+                    <div class="exp-header">
+                        <div class="exp-company">具备 AI 扩写能力的写信寄信网站</div>
+                        <div class="exp-meta"><a href="https://lizijayy.github.io/letter-site/" target="_blank" rel="noopener noreferrer" style="color: var(--accent-rust); text-decoration: underline; font-weight: bold; position: relative; z-index: 100; pointer-events: auto;">HTTPS://LIZIJAYY.GITHUB.IO/LETTER-SITE/</a></div>
+                    </div>
+                    <div class="exp-role">匿名写信 / 取信 / AI 帮写信</div>
+                    <div class="exp-desc">
+                        <p>一个以 8 位数密码作为存信取信标识，具备 AI 帮写信功能，支持 A 用户写信，B 用户取信的匿名交互网站。接入 Supabase（BaaS）作为云端数据库用于信件上传存储提取，利用 Supabase Function 接入火山引擎开源大模型 API 用于 AI 帮写信优化，在版本更新中加入状态锁防抖机制，避免因网络延迟重复调用 API 导致 token 浪费。</p>
                     </div>
                 </div>
             </section>
